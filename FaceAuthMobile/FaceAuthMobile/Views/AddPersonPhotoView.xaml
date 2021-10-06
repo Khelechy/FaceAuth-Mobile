@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:FaceAuthMobile.ViewModels"
+             x:Class="FaceAuthMobile.Views.AddPersonPhotoView"
+             Title="Add New Staff Photo"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label Text="Add New Staff Photo" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.BindingContext>
+        <vm:AddPersonPhotoViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="20">
+                <Grid Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <BoxView Grid.Row="0" Grid.Column="0" Color="#F1F1F1" HeightRequest="5" CornerRadius="2" WidthRequest="300"/>
+                    <BoxView Grid.Row="0" Grid.Column="1" Color="#316EE4" HeightRequest="5" CornerRadius="2" WidthRequest="300"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Details" Grid.Row="0" Grid.Column="0" FontFamily="DefaultFontBold" FontSize="15" TextColor="#ACACAC"/>
+                    <Label Text="Face Scan" Grid.Row="0" Grid.Column="1" FontFamily="DefaultFontBold" FontSize="15" TextColor="#316EE4"/>
+                </Grid>
+
+                <StackLayout Margin="0,10,0,0" Spacing="20">
+                    <Label Text="Face Scan" FontFamily="DefaultFontBold" FontSize="20" TextColor="#555555"/>
+                    <StackLayout Spacing="30" >
+                        <StackLayout>
+                            <Image x:Name="staffPhoto"/>
+                        </StackLayout>
+                        <StackLayout Margin="0,40,0,40" Spacing="5">
+                            <Button x:Name="takePhoto" Clicked="TakePicture_Clicked" Text="Take Photo" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
+                            <Button x:Name="uploadButton" Command="{Binding AddStaffCommand}" Text="Upload Photo" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

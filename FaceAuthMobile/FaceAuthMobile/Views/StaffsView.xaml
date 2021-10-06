@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaceAuthMobile.Views.StaffsView"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label Text="Staffs" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView Padding="20">
+            <StackLayout>
+                <Button Text="Add New Staff" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" CornerRadius="8" FontFamily="DefaultFontBold" Margin="0,50,0,0" Clicked="Button_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaceAuthMobile.Views.VerifyStaff"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label Text="Verify" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView Padding="20">
+            <StackLayout>
+                <Image x:Name="staffImage"/>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="First Name" FontFamily="DefaultFont" FontSize="15"/>
+                            <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Frame CornerRadius="7" BackgroundColor="#316ee4">
+                                <Label Text="Staff" TextColor="White" FontFamily="DefaultFontBold" FontSize="15"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Last Name" FontFamily="DefaultFont" FontSize="15"/>
+                        <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Email Address" FontFamily="DefaultFont" FontSize="15"/>
+                        <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Role" FontFamily="DefaultFont" FontSize="15"/>
+                        <Label Text="Product Manager" FontFamily="DefaultFontBold" FontSize="15" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
