@@ -65,7 +65,7 @@ namespace FaceAuthMobile.Managers
             }
         }
 
-        public async Task<Tuple<string, List<AddPersonResponseModel>>> GetStaffs()
+        public async Task<Tuple<string, List<AddPersonResponseModel>, int>> GetStaffs()
         {
             string error = "";
             try
@@ -75,18 +75,43 @@ namespace FaceAuthMobile.Managers
                 var response = await client.ExecuteAsync<List<AddPersonResponseModel>>(request);
                 if ((int)response.StatusCode == 200)
                 {
-                    return new Tuple<string, List<AddPersonResponseModel>>(" ", response.Data);
+                    return new Tuple<string, List<AddPersonResponseModel>, int>(" ", response.Data, (int)response.StatusCode);
                 }
                 else
                 {
                     error = response.Content;
-                    return new Tuple<string, List<AddPersonResponseModel>>(error, null);
+                    return new Tuple<string, List<AddPersonResponseModel>, int>(error, null, 0);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return new Tuple<string, List<AddPersonResponseModel>>(ex.Message, null);
+                return new Tuple<string, List<AddPersonResponseModel>, int>(ex.Message, null, 0);
+            }
+        }
+
+        public async Task<Tuple<string, List<GetLogsResponseModel>, int>> GetLogs()
+        {
+            string error = "";
+            try
+            {
+                var client = new RestClient(AppConfig.BaseURL);
+                var request = new RestRequest("api/faceauth/get-logs", Method.GET);
+                var response = await client.ExecuteAsync<List<GetLogsResponseModel>>(request);
+                if ((int)response.StatusCode == 200)
+                {
+                    return new Tuple<string, List<GetLogsResponseModel>, int>(" ", response.Data,(int)response.StatusCode);
+                }
+                else
+                {
+                    error = response.Content;
+                    return new Tuple<string, List<GetLogsResponseModel>, int>(error, null,0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return new Tuple<string, List<GetLogsResponseModel>, int>(ex.Message, null, 0);
             }
         }
     }

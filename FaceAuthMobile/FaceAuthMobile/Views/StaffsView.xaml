@@ -1,15 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:FaceAuthMobile.ViewModels"
              x:Class="FaceAuthMobile.Views.StaffsView"
              BackgroundColor="White">
     <NavigationPage.TitleView>
         <Label Text="Staffs" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
     </NavigationPage.TitleView>
+    <ContentPage.BindingContext>
+        <vm:StaffsViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView Padding="20">
             <StackLayout>
-                <Button Text="Add New Staff" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" CornerRadius="8" FontFamily="DefaultFontBold" Margin="0,50,0,0" Clicked="Button_Clicked"/>
+                <CollectionView ItemsSource="{Binding Staffs}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always">
+                    <CollectionView.Header>
+                        <StackLayout>
+                            <Label Text="No Staff currently exists" IsVisible="{Binding IsNonFound}"  HorizontalTextAlignment="Center" TextColor="#316EE4"/>
+      
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" BackgroundColor="#316EE4" CornerRadius="7">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="Name: " FontSize="16" TextColor="White" FontFamily="DefaultFontBold"/>
+                                        <Label Text="{Binding Name}" FontSize="14" TextColor="White" FontFamily="DefaultFontBold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="Email: " FontSize="16" TextColor="White" FontFamily="DefaultFontBold"/>
+                                        <Label Text="{Binding Email}" FontSize="14" TextColor="White" FontFamily="DefaultFontBold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="Role: " FontSize="16" TextColor="White" FontFamily="DefaultFontBold"/>
+                                        <Label Text="{Binding Role}" FontSize="14" TextColor="White" FontFamily="DefaultFontBold"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Add New Staff" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" CornerRadius="8" FontFamily="DefaultFontBold" Margin="0,50,0,0" Clicked="ToAddStaff"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:FaceAuthMobile.ViewModels"
              x:Class="FaceAuthMobile.Views.VerifyStaff"
              BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:VerifyStaffViewModel/>
+    </ContentPage.BindingContext>
     <NavigationPage.TitleView>
         <Label Text="Verify" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView Padding="20">
-            <StackLayout>
-                <Image x:Name="staffImage"/>
+            <StackLayout Spacing="50">
                 <StackLayout>
-                    <StackLayout Orientation="Horizontal">
+                    <Image x:Name="staffImage"/>
+                    <StackLayout Spacing="15" IsVisible="{Binding IsLoaded}">
                         <StackLayout>
-                            <Label Text="First Name" FontFamily="DefaultFont" FontSize="15"/>
-                            <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
+                            <Label Text="First Name" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="{Binding FirstName}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
-                        <StackLayout HorizontalOptions="EndAndExpand">
-                            <Frame CornerRadius="7" BackgroundColor="#316ee4">
-                                <Label Text="Staff" TextColor="White" FontFamily="DefaultFontBold" FontSize="15"/>
-                            </Frame>
+                        <StackLayout>
+                            <Label Text="Last Name" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="{Binding LastName}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label Text="Last Name" FontFamily="DefaultFont" FontSize="15"/>
-                        <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label Text="Email Address" FontFamily="DefaultFont" FontSize="15"/>
-                        <Label Text="Kelechi" FontFamily="DefaultFontBold" FontSize="15"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Label Text="Role" FontFamily="DefaultFont" FontSize="15"/>
-                        <Label Text="Product Manager" FontFamily="DefaultFontBold" FontSize="15" />
+                        <StackLayout>
+                            <Label Text="Email Address" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="{Binding Email}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Role" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="{Binding Role}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
+                        </StackLayout>
+
                     </StackLayout>
                 </StackLayout>
+                <Button x:Name="takePhoto" Clicked="TakePicture_Clicked" Text="Take Photo" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -22,7 +22,7 @@ namespace FaceAuthMobile.Views
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, true);
             Init();
-            uploadButton.IsEnabled = false;
+            uploadButton.IsVisible = false;
         }
 
 
@@ -47,7 +47,7 @@ namespace FaceAuthMobile.Views
 
                 if (mediaFile != null)
                     staffPhoto.Source = ImageSource.FromStream(() => { return mediaFile.GetStream(); });
-                    uploadButton.IsEnabled = true;
+                    uploadButton.IsVisible = true;
             }
             else
             {

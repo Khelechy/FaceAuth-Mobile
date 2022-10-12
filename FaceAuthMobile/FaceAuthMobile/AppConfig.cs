@@ -6,6 +6,6 @@ namespace FaceAuthMobile
 {
     public static class AppConfig
     {
-        public static string BaseURL { get { return "http://52.88.111.245/justownit-api-rider/"; } }
+        public static string BaseURL { get { return "https://face-auth-azure.herokuapp.com/"; } }
     }
 }

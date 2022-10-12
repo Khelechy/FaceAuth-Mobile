@@ -6,14 +6,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace FaceAuthMobile.ViewModels
 {
-    public class AddPersonPhotoViewModel : BaseViewModel
+    public class VerifyStaffViewModel : BaseViewModel
     {
+        private bool isLoaded;
+        public bool IsLoaded
+        {
+            get { return isLoaded; }
+            set
+            {
+                isLoaded = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string firstName;
         public string FirstName
         {
@@ -58,6 +67,7 @@ namespace FaceAuthMobile.ViewModels
             }
         }
 
+
         private string imageString;
         public string ImageString
         {
@@ -70,14 +80,12 @@ namespace FaceAuthMobile.ViewModels
         }
 
 
-        public ICommand AddStaffCommand => new Command(AddStaffEvent);
-
-        async void AddStaffEvent()
+        async void VerifyStaffEvent()
         {
-            await AddStaff();
+            await VerifyStaff();
         }
 
-        public async Task AddStaff()
+        public async Task VerifyStaff()
         {
             if (string.IsNullOrEmpty(ImageString))
             {
@@ -95,36 +103,36 @@ namespace FaceAuthMobile.ViewModels
                     else
                     {
                         var manager = new ApiManager();
-                        var addModel = new AddPersonRequestModel
+                        var addModel = new RecognizePersonRequestModel
                         {
-                            FirstName = FirstName,
-                            LastName = LastName,
-                            Email = Email,
-                            Role = Role,
                             GroupId = personGroup,
                             Image = ImageString
                         };
                         UserDialogs.Instance.ShowLoading("Loading");
-                        var (error, response) = await manager.AddPerson(addModel);
+                        var (error, response) = await manager.IdentifyPerson(addModel);
                         if (response == null || !string.IsNullOrEmpty(error))
                         {
                             await App.Current.MainPage.DisplayAlert("Error", error, "OK");
                         }
                         else
                         {
-                            await App.Current.MainPage.DisplayAlert("Success", "Staff Added Successfully", "OK");
+                            await App.Current.MainPage.DisplayAlert("Success", "Staff Identified", "OK");
+                            IsLoaded = true;
+                            FirstName = response.FirstName;
+                            LastName = response.LastName;
+                            Email = response.Email;
+                            Role = response.Role;
                         }
                         UserDialogs.Instance.HideLoading();
                     }
-                   
+
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
                 }
             }
-           
-        }
 
+        }
     }
 }

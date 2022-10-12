@@ -22,5 +22,10 @@ namespace FaceAuthMobile.Views
         {
             await Application.Current.MainPage.Navigation.PushAsync(new StaffsView());
         }
+
+        private async void ToAddStaff(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddPersonView());
+        }
     }
 }
