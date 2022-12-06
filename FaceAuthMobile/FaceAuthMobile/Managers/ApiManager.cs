@@ -11,7 +11,7 @@ namespace FaceAuthMobile.Managers
 {
     public class ApiManager
     {
-        public async Task<Tuple<string, AddPersonResponseModel>> AddPerson(AddPersonRequestModel requestModel)
+        public async Task<Tuple<string, AddPersonResponseModel, int>> AddPerson(AddPersonRequestModel requestModel)
         {
             string error = "";
             try
@@ -23,45 +23,45 @@ namespace FaceAuthMobile.Managers
                 var response = await client.ExecuteAsync<AddPersonResponseModel>(request);
                 if((int)response.StatusCode == 200)
                 {
-                    return new Tuple<string, AddPersonResponseModel>(" ",  response.Data);
+                    return new Tuple<string, AddPersonResponseModel, int>(" ",  response.Data, 200);
                 }
                 else
                 {
                     error = response.Content;
-                    return new Tuple<string, AddPersonResponseModel>(error, null);
+                    return new Tuple<string, AddPersonResponseModel, int>(error, null, 0);
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return new Tuple<string, AddPersonResponseModel>(ex.Message, null);
+                return new Tuple<string, AddPersonResponseModel, int>(ex.Message, null, 0);
             }
         }
 
-        public async Task<Tuple<string, AddPersonResponseModel>> IdentifyPerson(object requestModel)
+        public async Task<Tuple<string, AddPersonResponseModel, int>> IdentifyPerson(object requestModel)
         {
             string error = "";
             try
             {
                 var client = new RestClient(AppConfig.BaseURL);
-                var request = new RestRequest("api/faceauth/recognize-person", Method.GET);
+                var request = new RestRequest("api/faceauth/recognize-person", Method.POST);
                 var requestBody = JsonConvert.SerializeObject(requestModel);
                 request.AddParameter("application/json", requestBody, ParameterType.RequestBody);
                 var response = await client.ExecuteAsync<AddPersonResponseModel>(request);
                 if ((int)response.StatusCode == 200)
                 {
-                    return new Tuple<string, AddPersonResponseModel>(" ", response.Data);
+                    return new Tuple<string, AddPersonResponseModel, int>(" ", response.Data, 200);
                 }
                 else
                 {
                     error = response.Content;
                 }
-                return new Tuple<string, AddPersonResponseModel>(error, null);
+                return new Tuple<string, AddPersonResponseModel, int>(error, null, 0);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return new Tuple<string, AddPersonResponseModel>(ex.Message, null);
+                return new Tuple<string, AddPersonResponseModel, int>(ex.Message, null, 0);
             }
         }
 

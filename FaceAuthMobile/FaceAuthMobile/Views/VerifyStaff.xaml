@@ -16,25 +16,26 @@
                     <Image x:Name="staffImage"/>
                     <StackLayout Spacing="15" IsVisible="{Binding IsLoaded}">
                         <StackLayout>
-                            <Label Text="First Name" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="First Name" FontFamily="DefaultFontBold" FontSize="15" TextColor="#ACACAC"/>
                             <Label Text="{Binding FirstName}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
                         <StackLayout>
-                            <Label Text="Last Name" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="Last Name" FontFamily="DefaultFontBold" FontSize="15" TextColor="#ACACAC"/>
                             <Label Text="{Binding LastName}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
                         <StackLayout>
-                            <Label Text="Email Address" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="Email Address" FontFamily="DefaultFontBold" FontSize="15" TextColor="#ACACAC"/>
                             <Label Text="{Binding Email}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
                         <StackLayout>
-                            <Label Text="Role" FontFamily="DefaultFont" FontSize="15" TextColor="#ACACAC"/>
+                            <Label Text="Role" FontFamily="DefaultFontBold" FontSize="15" TextColor="#ACACAC"/>
                             <Label Text="{Binding Role}" FontFamily="DefaultFontBold" FontSize="17" TextColor="#555555"/>
                         </StackLayout>
 
                     </StackLayout>
                 </StackLayout>
                 <Button x:Name="takePhoto" Clicked="TakePicture_Clicked" Text="Take Photo" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
+                <Button x:Name="verifyButton" Command="{Binding VerifyStaffCommand}" Text="Verify Photo" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

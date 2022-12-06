@@ -6,6 +6,6 @@ namespace FaceAuthMobile
 {
     public static class AppConfig
     {
-        public static string BaseURL { get { return "https://face-auth-azure.herokuapp.com/"; } }
+        public static string BaseURL { get { return "https://face-auth.azurewebsites.net/"; } }
     }
 }

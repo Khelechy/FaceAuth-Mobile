@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace FaceAuthMobile.ViewModels
 {
@@ -79,6 +81,7 @@ namespace FaceAuthMobile.ViewModels
             }
         }
 
+        public ICommand VerifyStaffCommand => new Command(VerifyStaffEvent);
 
         async void VerifyStaffEvent()
         {
@@ -109,12 +112,8 @@ namespace FaceAuthMobile.ViewModels
                             Image = ImageString
                         };
                         UserDialogs.Instance.ShowLoading("Loading");
-                        var (error, response) = await manager.IdentifyPerson(addModel);
-                        if (response == null || !string.IsNullOrEmpty(error))
-                        {
-                            await App.Current.MainPage.DisplayAlert("Error", error, "OK");
-                        }
-                        else
+                        var (error, response, statusCode) = await manager.IdentifyPerson(addModel);
+                        if (statusCode == 200)
                         {
                             await App.Current.MainPage.DisplayAlert("Success", "Staff Identified", "OK");
                             IsLoaded = true;
@@ -123,6 +122,11 @@ namespace FaceAuthMobile.ViewModels
                             Email = response.Email;
                             Role = response.Role;
                         }
+                        else
+                        {
+                            await App.Current.MainPage.DisplayAlert("Error", error, "OK");
+                        }
+                        
                         UserDialogs.Instance.HideLoading();
                     }
 

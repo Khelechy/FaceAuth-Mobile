@@ -14,7 +14,7 @@ namespace FaceAuthMobile
         public App()
         {
             InitializeComponent();
-            Navigation = new NavigationPage(new MainPage());
+            Navigation = new NavigationPage(new LoginView());
             Application.Current.MainPage = Navigation;
         }
 

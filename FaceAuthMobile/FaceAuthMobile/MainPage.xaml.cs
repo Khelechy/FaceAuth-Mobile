@@ -18,43 +18,23 @@ namespace FaceAuthMobile
             InitializeComponent();
         }
 
-        private async Task SetPersonGroupId()
-        {
-            try
-            {
-                var group = await SecureStorage.GetAsync("personGroupId");
-                if(!string.IsNullOrEmpty(personGroupId.Text))
-                {
-                    await SecureStorage.SetAsync("personGroupId", personGroupId.Text);
-                }
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        }
-
         private async void ToViewLogs(object sender, EventArgs e)
         {
-            await SetPersonGroupId();
             await Application.Current.MainPage.Navigation.PushAsync(new LogsView());
         }
 
         private async void ToStaffList(object sender, EventArgs e)
         {
-            await SetPersonGroupId();
             await Application.Current.MainPage.Navigation.PushAsync(new StaffsView());
         }
 
         private async void ToAddStaff(object sender, EventArgs e)
         {
-            await SetPersonGroupId();
             await Application.Current.MainPage.Navigation.PushAsync(new AddPersonView());
         }
 
         private async void ToVerifyStaff(object sender, EventArgs e)
         {
-            await SetPersonGroupId();
             await Application.Current.MainPage.Navigation.PushAsync(new VerifyStaff());
         }
     }

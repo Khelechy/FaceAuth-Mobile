@@ -6,8 +6,8 @@
     <NavigationPage.TitleView>
         <Label Text="Home" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
     </NavigationPage.TitleView>
-    <StackLayout Padding="20" Spacing="10">
-        <Entry x:Name="personGroupId" Placeholder="Person group id" HorizontalOptions="FillAndExpand" BackgroundColor="#F4F4F4" Visual="Material" TextColor="#373435" PlaceholderColor="#9EA2AE" FontFamily="DefaultFont"/>
+    <StackLayout Padding="20" Spacing="10" VerticalOptions="CenterAndExpand">
+
         <Button  Clicked="ToViewLogs" Text="View Logs" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
         <Button  Clicked="ToStaffList" Text="Staff List" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
         <Button  Clicked="ToAddStaff" Text="Add Staff" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>

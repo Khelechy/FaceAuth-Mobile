@@ -21,6 +21,7 @@ namespace FaceAuthMobile.Views
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, true);
+            verifyButton.IsVisible = false;
         }
 
         public async Task<MediaFile> TakePicture()
@@ -39,6 +40,7 @@ namespace FaceAuthMobile.Views
 
                 if (mediaFile != null)
                     staffImage.Source = ImageSource.FromStream(() => { return mediaFile.GetStream(); });
+                    verifyButton.IsVisible = true;
             }
             else
             {

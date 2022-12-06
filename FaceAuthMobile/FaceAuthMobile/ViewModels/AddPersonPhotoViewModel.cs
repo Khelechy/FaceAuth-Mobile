@@ -105,14 +105,14 @@ namespace FaceAuthMobile.ViewModels
                             Image = ImageString
                         };
                         UserDialogs.Instance.ShowLoading("Loading");
-                        var (error, response) = await manager.AddPerson(addModel);
-                        if (response == null || !string.IsNullOrEmpty(error))
+                        var (error, response, statusCode) = await manager.AddPerson(addModel);
+                        if (statusCode == 200)
                         {
-                            await App.Current.MainPage.DisplayAlert("Error", error, "OK");
+                            await App.Current.MainPage.DisplayAlert("Success", "Staff Added Successfully", "OK");
                         }
                         else
                         {
-                            await App.Current.MainPage.DisplayAlert("Success", "Staff Added Successfully", "OK");
+                            await App.Current.MainPage.DisplayAlert("Error", error, "OK");
                         }
                         UserDialogs.Instance.HideLoading();
                     }

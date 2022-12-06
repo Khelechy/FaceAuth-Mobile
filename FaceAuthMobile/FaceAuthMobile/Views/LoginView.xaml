@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FaceAuthMobile.Views.LoginView"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label Text="Login" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"  FontFamily="DefaultFontBold" Margin="-50,0,0,0"/>
+    </NavigationPage.TitleView>
+    <StackLayout Padding="20" Spacing="10" VerticalOptions="CenterAndExpand">
+        <Label Text="Please Enter Admin Password to Authenticate" FontFamily="DefaultFontBold" FontSize="20" TextColor="#316EE4"/>
+        <Entry x:Name="personGroupId" Placeholder="Password" IsPassword="true" HorizontalOptions="FillAndExpand" BackgroundColor="#F4F4F4" Visual="Material" TextColor="#373435" PlaceholderColor="#9EA2AE" FontFamily="DefaultFont"/>
+        <Button  Clicked="ToMainPage" Text="Login" BackgroundColor="#316EE4" TextColor="White" FontSize="16" HorizontalOptions="FillAndExpand" HeightRequest="50" CornerRadius="8" FontFamily="DefaultFontBold"/>
+    </StackLayout>
+</ContentPage>
